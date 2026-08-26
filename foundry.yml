@@ -1,0 +1,19 @@
+minCliVersion: "0.196.0"
+functionsTypescriptRuntimeVersion: "0.123.0"
+
+components:
+  - type: ONTOLOGY
+    path: ./palantir/ontology
+  - type: TYPESCRIPT_FUNCTIONS
+    path: ./palantir/functions/typescript-functions
+  - type: APP
+    path: ./palantir/app
+
+bundle:
+  name: "xunia-sounds-superrepo"
+  description: "XUNIA SOUNDS Ontology, TypeScript functions, and React control plane for Soundnode + SoundCloudOpen workflows."
+  mavenCoordinate: "com.sonoxo:xunia-sounds-superrepo"
+  installMode: SINGLETON
+
+osdkOutput: palantir/ontology/osdk-output
+apiNamespace: com.sonoxo.xuniasounds

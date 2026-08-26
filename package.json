@@ -1,8 +1,8 @@
 {
   "name": "Soundnode",
-  "version": "7.1.0",
+  "version": "7.2.0",
   "main": "main.js",
-  "description": "Soundnode desktop with XUNIA SOUNDS and SoundCloudOpen integration",
+  "description": "Soundnode desktop with XUNIA SOUNDS, SoundCloudOpen, and Palantir SuperRepo integration",
   "repository": {
     "type": "git",
     "url": "git://github.com/sonoxo/soundnode-app-xunia.git"
@@ -22,7 +22,9 @@
     "package:win32": "electron-packager ./ Soundnode --platform=win32 --out ./dist/Soundnode --electron-version 8.0.1 --overwrite --icon ./app/soundnode.icns",
     "package:all": "npm run package:osx && npm run package:linux && npm run package:win32",
     "test:xunia": "node tests/xunia-soundcloudopen.test.js",
-    "check:xunia": "node --check integrations/soundcloudopenBridge.js && node --check app/public/js/xuniaSoundCloudOpen.js && node tests/xunia-soundcloudopen.test.js"
+    "check:xunia": "node --check integrations/soundcloudopenBridge.js && node --check app/public/js/xuniaSoundCloudOpen.js && node tests/xunia-soundcloudopen.test.js",
+    "check:superrepo": "node scripts/verify-superrepo.js",
+    "check:xunia:all": "npm run check:xunia && npm run check:superrepo"
   },
   "author": "Michael Lancaster / XUNIA integration by sonoxo",
   "license": "GPL-3.0",

@@ -1,0 +1,30 @@
+name: XUNIA Palantir SuperRepo Shape
+
+on:
+  push:
+    branches:
+      - master
+      - feature/palantir-superrepo-xunia
+  pull_request:
+    paths:
+      - 'foundry.yml'
+      - 'palantir/**'
+      - 'doc/PALANTIR_SUPERREPO.md'
+      - 'scripts/verify-superrepo.js'
+      - 'package.json'
+      - '.github/workflows/superrepo-shape.yml'
+
+jobs:
+  verify:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node: [18, 20]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Verify SuperRepo architecture
+        run: node scripts/verify-superrepo.js
