@@ -37,6 +37,49 @@ npm run check:xunia
 
 Full integration guide: [doc/XUNIA_SOUNDCLOUDOPEN.md](doc/XUNIA_SOUNDCLOUDOPEN.md)
 
+## PALANTIR SUPERREPO CONTROL PLANE
+
+This repository now also follows Palantir's August 2026 **SuperRepo** model for the governed application layer.
+
+Beginner flow:
+
+**SOUNDNODE DESKTOP → XUNIA SOUNDS → SOUNDCLOUDOPEN / BEATSTARS EVIDENCE → PALANTIR ONTOLOGY → TYPESCRIPT FUNCTIONS → REACT APP → MARKETPLACE PRODUCT**
+
+The root `foundry.yml` declares three SuperRepo components:
+
+```text
+palantir/ontology/                       Ontology-as-code
+palantir/functions/typescript-functions TypeScript v2 functions
+palantir/app/                            React + @osdk/react control plane
+```
+
+The Ontology currently models:
+
+- **XUNIA Mission** — the creator request and workflow state;
+- **Beat Candidate** — BeatStars candidate metadata, rationale, selection, and license-review state; and
+- **Sound Asset** — authorized SoundCloud evidence and format/authorization state.
+
+The TypeScript v2 `selectBeatCandidate` function validates that a candidate belongs to the mission, then prepares Ontology edits for mission/candidate selection state. The React control plane reads missions, beat candidates, and SoundCloud evidence from the locally generated `@ontology/sdk` package.
+
+Palantir currently lists **external sources as coming in the future for SuperRepo**, so SoundCloud and BeatStars calls remain in the existing desktop/XUNIA bridge instead of being faked inside a SuperRepo function. The Palantir layer governs the evidence once it enters the Ontology.
+
+Verify the checked-in SuperRepo architecture without installing the legacy Electron dependency tree:
+
+```bash
+npm run check:superrepo
+```
+
+When SuperRepo beta is enabled on the target Foundry enrollment, the documented Foundry CLI lifecycle is:
+
+```bash
+foundry start
+foundry bundle --project-version 0.1.0
+foundry deploy configure
+foundry deploy
+```
+
+Full SuperRepo implementation guide: [doc/PALANTIR_SUPERREPO.md](doc/PALANTIR_SUPERREPO.md)
+
 ---
 
 [![Join the chat at https://gitter.im/Soundnode/soundnode-app](https://badges.gitter.im/Soundnode/soundnode-app.svg)](https://gitter.im/Soundnode/soundnode-app?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
